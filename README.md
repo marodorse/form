@@ -32,7 +32,7 @@ First name & last name + email + country (list) + message + gender (M/F) (Radio 
 
 * Presentation: server/client architecture (transmissive, 10")
 
-* Sanitization: neutralizing any harmful encoding (<script>)
+* Sanitization: neutralizing any harmful encoding (<script)
 
 * Validation: mandatory fields + valid email
 
@@ -82,29 +82,32 @@ Protection Against XSS and SQL Injection Attacks :
 1. Input Sanitization with Bleach:
 
   - Bleach is utilized to sanitize user inputs susceptible to HTML injections, ensuring that any potentially dangerous HTML tags or attributes are removed before rendering.
-
-> ``# Example of using bleach for HTML sanitization in FastAPI application``
-> 	``first_name = bleach.clean(first_name, strip=True)``
-> 	``last_name = bleach.clean(last_name, strip=True)``
-> 	``email = bleach.clean(email, strip=True)``
-> 	``continent = bleach.clean(continent, strip=True)``
-> 	``message = bleach.clean(message, strip=True)``
+```
+ # Example of using bleach for HTML sanitization in FastAPI application
+ 	first_name = bleach.clean(first_name, strip=True)
+	last_name = bleach.clean(last_name, strip=True)
+ 	email = bleach.clean(email, strip=True)
+    continent = bleach.clean(continent, strip=True)
+ 	message = bleach.clean(message, strip=True)
+```
 
 2. Parameterized Queries with SQLAlchemy:
 
 - Parameterized queries are used to interact with the SQLite database, ensuring that user inputs are properly escaped to prevent SQL injection attacks.
-> `# Example of parameterized queries with SQLAlchemy`
-> `contact = Contact(`
->     `first_name=first_name,`
->     `last_name=last_name,`
->     `email=email,`
->     `continent=continent,`
->     `message=message,`
->     `gender=gender,`
->     `subject=subject`
-> `)`
-> `db.add(contact)`
-> `db.commit()`
+ # Example of parameterized queries with SQLAlchemy`
+ ```
+ contact = Contact(
+     first_name=first_name,
+     last_name=last_name,
+     email=email,
+     continent=continent,
+     message=message,
+     gender=gender,
+     subject=subject
+ )
+ db.add(contact)
+ db.commit()
+ ```
 
 3. Protection Against XSS Vulnerabilities
 
@@ -118,20 +121,37 @@ Protection Against XSS and SQL Injection Attacks :
 1. **POST Request:**
     
     - POST requests are used to submit data to be processed to a specified resource. In this project, POST requests are employed when users submit the contact form with their information. The data is sent in the request body.
-	    - @app.post("/")
+	    ```
+        @app.post("/")
 		async def process_form(...):
+        ```
 2. **GET Request:**
 
 	- GET requests are used to request data from a specified resource. In this project, GET requests are used to initially render the HTML form page for users to view and fill out.
-		@app.get("/")
+		```
+        @app.get("/")
 		def get_form(...):
-    ...
+        ...
+    
 ----------------------------------------------------------------
 ### Honeypot and Anti-Spam Technique
 
 1. **Honeypot Field:**
     - A honeypot field named `website` is added to the form but hidden from regular users. If this field is filled out (indicating a bot), the form submission is flagged as potential spam.
-	    - # Honeypot field in the FastAPI form handling
+	```
+    # Honeypot field in the FastAPI form handling
 	if website:
 	    errors["message"] = "Spam detected"
 	    return templates.TemplateResponse("errors.html", {"request": request, "errors": errors})
+        ```
+
+  ----------------------------------------------------------------
+  ### Some Images to visualise all the work that has been done. 
+        
+![final version](image.png)
+
+![final version showing errors](finalwitherrors.PNG)
+
+![automated spam response test](SpamDetected.PNG)
+
+![DB Browser for SQLite DB](WorkingDB.PNG)
