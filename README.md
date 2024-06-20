@@ -52,7 +52,18 @@ This project utilizes several Python libraries and frameworks to create a web ap
 
 I decided to use DB Browser for SQLite for the purpose of not having to write SQL commands manually and familiarising myself with this open-source tool. Though SQL writing still happened due to table modifications. 
 
-  ----------------------------------------------------------------
+A [file](FormProjectDependencies.txt) contains all necessary libraries for this project. 
+
+Once all is installed, to run the script use :
+```
+uvicorn module:fastAPIinstance --reload 
+or
+uvicorn module:fastAPIinstance --host x.x.x.x. --port xxxx
+```
+Change host, port, module and fastAPIinstance accordingly.
+To Access the Application open a web browser and go to the localhost with corresponding port. 
+
+----------------------------------------------------------------
 
 Libraries Used:
 
@@ -79,9 +90,9 @@ Bleach is used for sanitizing HTML inputs, ensuring that only safe HTML elements
 
 ----------------------------------------------------------------
 ## Security Measures :
-Protection Against XSS and SQL Injection Attacks :
+**Protection Against XSS and SQL Injection Attacks :**
 
-1. Input Sanitization with Bleach:
+1. **Input Sanitization with Bleach:**
 
   - Bleach is utilized to sanitize user inputs susceptible to HTML injections, ensuring that any potentially dangerous HTML tags or attributes are removed before rendering.
 ```
@@ -93,11 +104,12 @@ Protection Against XSS and SQL Injection Attacks :
  	message = bleach.clean(message, strip=True)
 ```
 
-2. Parameterized Queries with SQLAlchemy:
+2. **Parameterized Queries with SQLAlchemy:**
 
 - Parameterized queries are used to interact with the SQLite database, ensuring that user inputs are properly escaped to prevent SQL injection attacks.
- # Example of parameterized queries with SQLAlchemy`
+ 
  ```
+ # Example of parameterized queries with SQLAlchemy
  contact = Contact(
      first_name=first_name,
      last_name=last_name,
@@ -111,9 +123,9 @@ Protection Against XSS and SQL Injection Attacks :
  db.commit()
  ```
 
-3. Protection Against XSS Vulnerabilities
+3. **Protection Against XSS Vulnerabilities**
 
-- Contextual Escaping with Jinja2Templates:**
+- Contextual Escaping with Jinja2Templates:
     - Jinja2Templates automatically performs contextual escaping when rendering templates, preventing XSS vulnerabilities by encoding HTML entities in user inputs.
 
 ----------------------------------------------------------------
