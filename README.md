@@ -48,7 +48,9 @@ First name & last name + email + country (list) + message + gender (M/F) (Radio 
 
   
 
-This project utilizes several Python libraries and frameworks to create a web application for handling contact form submissions securely.
+This project utilizes several Python libraries and frameworks to create a web application for handling contact form submissions securely. It is also using DB Browser for SQLite as well as a virtual environment (venv) to avoid conflicts. 
+
+I decided to use DB Browser for SQLite for the purpose of not having to write SQL commands manually and familiarising myself with this open-source tool. Though SQL writing still happened due to table modifications. 
 
   ----------------------------------------------------------------
 
@@ -147,11 +149,15 @@ Protection Against XSS and SQL Injection Attacks :
 
   ----------------------------------------------------------------
   ### Some Images to visualise all the work that has been done. 
-        
+
+Here is the finished product         
 ![final version](image.png)
 
+Here is what is displayed when errors occur
 ![final version showing errors](finalwitherrors.PNG)
 
+For the purpose of this exercise I have a script that automates spam detection for testing purposes.Another way would be through the web browser dev tools. [check the script here](test_spam_detection.py)
 ![automated spam response test](SpamDetected.PNG)
 
+Here are the submitted forms results in the DB 
 ![DB Browser for SQLite DB](WorkingDB.PNG)
