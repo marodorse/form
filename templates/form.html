@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Form</title>
+</head>
+<body>
+    <div style="max-width: 500px; margin: 20px auto; padding: 20px; border: 20px solid rgba(255, 0, 0, 0.7); border-radius: 50px; box-shadow: 0 0 15px rgba(0, 0, 0, 2);">
+        <h1 style="text-align: center;">Hackers Poulette Contact Form</h1>
+        <form action="/" method="post">
+            <label for="first_name"><b>First name:</b></label>
+            <input type="text" id="first_name" name="first_name" value="{{ first_name }}">
+            {% if errors.first_name %}<span style="color: red;">{{ errors.first_name }}</span>{% endif %}
+            <br><br>
+            <label for="last_name"><b>Last name:</b></label>
+            <input type="text" id="last_name" name="last_name" value="{{ last_name }}">
+            {% if errors.last_name %}<span style="color: red;">{{ errors.last_name }}</span>{% endif %}
+            <br><br>
+            <label for="email"><b>Email:</b></label>
+            <input type="email" id="email" name="email" value="{{ email }}">
+            {% if errors.email %}<span style="color: red;">{{ errors.email }}</span>{% endif %}
+            <br><br>
+            <label for="continent"><b>Continent:</b></label>
+            <select id="continent" name="continent">
+                <option value="">Select a continent</option>
+                <option value="Antartica" {% if continent == "Antartica" %}selected{% endif %}>Antartica</option>
+                <option value="Europe" {% if continent == "Europe" %}selected{% endif %}>Europe</option>
+                <option value="Africa" {% if continent == "Africa" %}selected{% endif %}>Africa</option>
+                <option value="South America" {% if continent == "South America" %}selected{% endif %}>South America</option>
+                <option value="Asia" {% if continent == "Asia" %}selected{% endif %}>Asia</option>
+                <option value="North America" {% if continent == "North America" %}selected{% endif %}>North America</option>
+                <option value="Oceania" {% if continent == "Oceania" %}selected{% endif %}>Oceania</option>
+            </select>
+            {% if errors.continent %}<span style="color: red;">{{ errors.continent }}</span>{% endif %}
+            <br><br>
+            <label for="message"><b>Message:</b></label>
+            <textarea id="message" name="message">{{ message }}</textarea>
+            {% if errors.message %}<span style="color: red;">{{ errors.message }}</span>{% endif %}
+            <br><br>
+            <label><b>Gender:</b></label>
+            <input type="radio" id="Potato" name="gender" value="P" {% if gender == "P" %}checked{% endif %}>
+            <label for="Potato">Potato</label>
+            <input type="radio" id="Orange" name="gender" value="O" {% if gender == "O" %}checked{% endif %}>
+            <label for="Orange">Orange</label>
+            {% if errors.gender %}<span style="color: red;">{{ errors.gender }}</span>{% endif %}
+            <br><br>
+            <label><b>Subject:</b></label>
+            <input type="radio" id="repair" name="subject" value="Repair" {% if subject == "Repair" %}checked{% endif %}>
+            <label for="repair">Repair</label>
+            <input type="radio" id="order" name="subject" value="Order" {% if subject == "Order" %}checked{% endif %}>
+            <label for="order">Order</label>
+            <input type="radio" id="other" name="subject" value="Other" {% if subject == "Other" %}checked{% endif %}>
+            <label for="other">Other</label>
+            {% if errors.subject %}<span style="color: red;">{{ errors.subject }}</span>{% endif %}
+            <br><br>
+            <!-- Honeypot field -->
+            <input type="text" id="website" name="website" style="display: none;">
+            <br><br>
+            <input type="submit" value="Submit" style="padding: 10px 30px; background-color: red; color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: bold;">
+        </form>
+    </div>
+</body>
+</html>
