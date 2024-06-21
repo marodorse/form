@@ -60,12 +60,11 @@ async def process_form(
     db: Session = Depends(get_db)
 ):
     # Sanitize inputs to remove potentially dangerous characters
-    first_name = re.sub(r"[<>]", "", first_name)
-    last_name = re.sub(r"[<>]", "", last_name)
-    email = re.sub(r"[<>]", "", email)
-    continent = re.sub(r"[<>]", "", continent)
-    message = re.sub(r"[<>]", "", message)
-
+    first_name = bleach.clean(first_name)
+    last_name = bleach.clean(last_name)
+    email = bleach.clean(email)
+    continent = bleach.clean(continent)
+    message = bleach.clean(message)
     # Validate required fields and format
     errors = {}
 

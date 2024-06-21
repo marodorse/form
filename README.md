@@ -163,8 +163,7 @@ Bleach is used for sanitizing HTML inputs, ensuring that only safe HTML elements
   ### Some Images to visualise all the work that has been done. 
 
 Here is the finished product         
-![final version](image.png)
-
+![alt text](image.png)
 Here is what is displayed when errors occur
 ![final version showing errors](finalwitherrors.PNG)
 
