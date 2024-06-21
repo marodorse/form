@@ -162,13 +162,18 @@ Bleach is used for sanitizing HTML inputs, ensuring that only safe HTML elements
   ----------------------------------------------------------------
   ### Some Images to visualise all the work that has been done. 
 
-Here is the finished product         
+**Here is the finished product** 
+
 ![alt text](image.png)
-Here is what is displayed when errors occur
+
+**Here is what is displayed when errors occur**
+
 ![final version showing errors](finalwitherrors.PNG)
 
-For the purpose of this exercise I have a script that automates spam detection for testing purposes.Another way would be through the web browser dev tools. [check the script here](test_spam_detection.py)
+**For the purpose of this exercise I have a script that automates spam detection for testing purposes.Another way would be through the web browser dev tools.**
+[check the script here](test_spam_detection.py)
 ![automated spam response test](SpamDetected.PNG)
 
-Here are the submitted forms results in the DB 
+**Here are the submitted user input in the DB**
+
 ![DB Browser for SQLite DB](WorkingDB.PNG)
